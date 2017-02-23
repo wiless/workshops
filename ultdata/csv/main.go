@@ -38,6 +38,7 @@ func main() {
 		log.Panic("Error creating file ", er)
 	}
 	output.WriteCSV(fw)
+	fw.Close()
 
 	output = irisDF.Filter(dataframe.F{"species", "==", "Iris-virginica"})
 	fw, er = os.Create("../data/virginica.csv")
@@ -45,6 +46,7 @@ func main() {
 		log.Panic("Error creating file ", er)
 	}
 	output.WriteCSV(fw)
+	fw.Close()
 
 	output = irisDF.Filter(dataframe.F{"species", "==", "Iris-versicolor"})
 	fw, er = os.Create("../data/versicolor.csv")
@@ -52,6 +54,8 @@ func main() {
 		log.Panic("Error creating file ", er)
 	}
 	output.WriteCSV(fw)
+	fw.Close()
+
 	fmt.Print(output)
 
 	// Save each of the species dataframe to a file.
